@@ -5,7 +5,9 @@ export default function Navbar(props) {
   return (
     <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
       <div className="container-fluid">
-        <a className="navbar-brand" href="#" onClick={() => props.setCurrentPage('home')}>{props.title}</a>
+        <a className="navbar-brand" href="#" onClick={() => props.setCurrentPage('home')}>
+          {props.title}
+        </a>
         <button
           className="navbar-toggler"
           type="button"
@@ -32,15 +34,34 @@ export default function Navbar(props) {
             </li>
           </ul>
 
+          {/* Add color mode buttons */}
+          <div className="d-flex">
+            <div
+              className="bg-primary rounded mx-2"
+              onClick={() => props.toggleMode('blue')}
+              style={{ height: '30px', width: '30px', cursor: 'pointer' }}
+            ></div>
+            <div
+              className="bg-success rounded mx-2"
+              onClick={() => props.toggleMode('green')}
+              style={{ height: '30px', width: '30px', cursor: 'pointer' }}
+            ></div>
+            <div
+              className="bg-danger rounded mx-2"
+              onClick={() => props.toggleMode('red')}
+              style={{ height: '30px', width: '30px', cursor: 'pointer' }}
+            ></div>
+          </div>
+
           <div className={`form-check form-switch text-${props.mode === 'light' ? 'dark' : 'light'}`}>
             <input
               className="form-check-input"
-              onClick={props.toggleMode}
+              onClick={() => props.toggleMode(props.mode === 'light' ? 'dark' : 'light')}  // Switch between light/dark
               type="checkbox"
               id="flexSwitchCheckDefault"
             />
             <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
-              Enable Dark Mode
+              Toggle Mode
             </label>
           </div>
         </div>
@@ -53,9 +74,7 @@ Navbar.propTypes = {
   title: PropTypes.string,
   mode: PropTypes.string.isRequired,
   toggleMode: PropTypes.func.isRequired,
-  switchToGreenMode: PropTypes.func,
-  switchToOriginalMode: PropTypes.func,
-  setCurrentPage: PropTypes.func.isRequired  // New prop for switching pages
+  setCurrentPage: PropTypes.func.isRequired
 };
 
 Navbar.defaultProps = {

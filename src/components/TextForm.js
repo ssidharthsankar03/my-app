@@ -31,6 +31,11 @@ export default function TextForm(props) {
             props.showAlert("No numbers found", "warning"); // Add alert type
         }
     };
+    const handleCopy = () => {
+        // Copy the text inside the textarea to clipboard
+        navigator.clipboard.writeText(text);
+        props.showAlert("Copied to Clipboard", "success");
+      };
 
     return (
         <>
@@ -49,10 +54,12 @@ export default function TextForm(props) {
                 <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleUpClick}>Convert to Uppercase</button>
                 <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleLoClick}>Convert to Lowercase</button>
                 <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleNumClick}>Extract All Numbers</button>
+                <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleCopy}>Copy To Clipboard</button>
+
             </div>
             <div className="container my-3">
                 <h2>Your Text Summary</h2>
-                <p>{text.split(" ").filter(word => word !== "").length} words and {text.length} characters</p>
+                <p>{text.split(/\s+/).filter(word => word !== "").length} words and {text.length} characters</p>
                 <p>{(0.008 * text.split(" ").filter(word => word !== "").length).toFixed(2)} Minutes read</p>
                 <h2>Preview</h2>
                 <p>{text}</p>
