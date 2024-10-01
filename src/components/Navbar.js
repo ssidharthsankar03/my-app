@@ -6,13 +6,13 @@ export default function Navbar(props) {
     <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
       <div className="container-fluid">
         <a className="navbar-brand" href="#" onClick={() => props.setCurrentPage('home')}>{props.title}</a>
-        <button 
-          className="navbar-toggler" 
-          type="button" 
-          data-bs-toggle="collapse" 
-          data-bs-target="#navbarSupportedContent" 
-          aria-controls="navbarSupportedContent" 
-          aria-expanded="false" 
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
@@ -33,11 +33,11 @@ export default function Navbar(props) {
           </ul>
 
           <div className={`form-check form-switch text-${props.mode === 'light' ? 'dark' : 'light'}`}>
-            <input 
-              className="form-check-input" 
-              onClick={props.toggleMode} 
-              type="checkbox" 
-              id="flexSwitchCheckDefault" 
+            <input
+              className="form-check-input"
+              onClick={props.toggleMode}
+              type="checkbox"
+              id="flexSwitchCheckDefault"
             />
             <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
               Enable Dark Mode

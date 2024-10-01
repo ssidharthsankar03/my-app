@@ -34,13 +34,13 @@ function App() {
       document.body.style.backgroundColor = 'grey';
       setPreviousMode('light');
       showAlert("Dark mode enabled", "success");
-      document.title = "TextUtils - Dark Mode";
+      // document.title = "TextUtils - Dark Mode";
     } else {
       setMode('light');
       document.body.style.backgroundColor = 'white';
       setPreviousMode('dark');
       showAlert("Light mode enabled", "success");
-      document.title = "TextUtils - Light Mode";
+      // document.title = "TextUtils - Light Mode";
     }
   };
 
@@ -75,7 +75,7 @@ function App() {
       <div className="container my-3">
         {/* Render the appropriate component based on the currentPage state */}
         {currentPage === 'home' && <TextForm showAlert={showAlert} heading="Enter Something" mode={mode} />}
-        {currentPage === 'about' && <About />}
+        {currentPage === 'about' && <About mode={mode}/>}
       </div>
     </>
   );
